@@ -1,6 +1,7 @@
 [package]
 name = "tuimenu"
-version = "0.1.0"
+authors = ["Anthony Chester <anthonychester71@gmail.com>"]
+version = "0.0.1"
 edition = "2024"
 
 [dependencies]
