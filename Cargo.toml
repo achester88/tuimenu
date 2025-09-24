@@ -2,6 +2,9 @@
 name = "tuimenu"
 authors = ["Anthony Chester <anthonychester71@gmail.com>"]
 version = "0.0.2"
+description = "A simple tui/cli program launcher"
+repository = "https://github.com/achester88/tuimenu/"
+readme = "./README.md"
 edition = "2024"
 
 [dependencies]

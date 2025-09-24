@@ -6,7 +6,7 @@ use std::env;
 use std::fs;
 use std::io::{stdin, Stdout, stdout, Write};
 use std::fs::File;
-
+use std::path::Path;
 use termion::event::Key;
 use termion::input::TermRead;
 use termion::raw::IntoRawMode;
@@ -24,25 +24,32 @@ fn read_config() -> Value {
         }
     };
 
-    let cont = match fs::read_to_string(home_dir.clone() + "/.config/tuimenu/tuimenu.json") {
+    let cont = match fs::read_to_string(home_dir.clone() + "/.config/tuimenu/list.json") {
         Ok(x) => x,
         Err(_) => {
             let path = home_dir + "/.config/tuimenu";
-            match fs::create_dir(&path) {
-            Ok(_) => {
-                match File::create(path.clone() + "/tuimenu.json") {
-                    Ok(mut x) => {
-                        let _ = x.write_all(b"");
-                        eprintln!("\x1b[31mError\x1b[0m {} is empty\n    Please vist https://github.com/achester88/tuimenu to find out more", path + "/tuimenu.json");
-                    },
-                    Err(e) => {
-                        eprintln!("\x1b[31mError\x1b[0m creating file {}:\n{}", path.clone() + "/tuimenu.json", e);
-                    }
+
+            //CHECK FOR DIR AND MAKE IF NOT THERE
+
+            let tuimenu_dir = Path::new(&path);
+
+            if !tuimenu_dir.exists() {
+
+                match fs::create_dir(path.clone()) {
+                    Ok(_) => {},
+                    Err(e) => eprintln!("\x1b[31mError\x1b[0m creating directory {}:\n{}", path.clone(), e),
                 }
-            },
-            Err(e) => {
-                eprintln!("\x1b[31mError\x1b[0m creating directory {}:\n{}", path.clone(), e);
-            },
+
+            }
+
+            match File::create(path.clone() + "/list.json") {
+                Ok(mut x) => {
+                    let _ = x.write_all(b"");
+                        eprintln!("\x1b[31mError\x1b[0m {} is empty\n\n    Please vist https://github.com/achester88/tuimenu to find out more\n", path + "/list.json");
+                },
+                Err(e) => {
+                        eprintln!("\x1b[31mError\x1b[0m creating file {}:\n{}", path.clone() + "/list.json", e);
+                }
             }
             exit(1);
         }
