@@ -3,10 +3,35 @@
 
 tuimenu is a simple Rust-based program intended for easily opening tui and cli applications from a simple terminal. It allows for simple "aliasing" of commands and quick launching of tui programs from one menu.
 
-### Installation
+## Installation
+tuimenu can be installed via cargo:
+```bash
+cargo install tuimenu
+```
+or built from this repo:
+<br>
+* Prerequisites: rustc, cargo
+<br>
 
-### Adding Programs
-To add a program to tuimenu, navigate to `~/tuimenu/list.json`, which is written in josn, with each program having it's own object.
+Step 1: Clone repo
+```bash
+git clone https://github.com/achester88/tuimenu
+cd tuimenu
+```
+Step 2: Build via Cargo
+```bash
+cargo build --release
+```
+Step 3: Running
+```bash
+cd target/release
+#Then make the tuimenu binary executable
+chmod +x ./tuimenu
+#Then to run it
+./tuimenu
+```
+## Adding Programs
+To add a program to tuimenu, navigate to `~/tuimenu/list.json`, and add each program as its own object.
 
 ```json
 [
@@ -15,9 +40,10 @@ To add a program to tuimenu, navigate to `~/tuimenu/list.json`, which is written
     "desc": "{TEXT TO BE SHOWN WITH COMMAND}",
     "args": ["ARG", "BY", "SPACE"] //Optional
   },
+]
 ```
 
-### Example Setup
+## Example Setup
 
 <img width="1226" height="636" alt="2025-09-24-170954_hyprshot" src="https://github.com/user-attachments/assets/eead088a-5c1c-48c6-a624-15f4fca0a973" />
 
