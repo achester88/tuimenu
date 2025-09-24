@@ -1,7 +1,7 @@
-# TUIMENU - A simple tui program launcher 
+# TUIMENU - A simple tui/cli program launcher 
 <img width="1226" height="636" alt="2025-09-24-171047_hyprshot" src="https://github.com/user-attachments/assets/cc7c85a7-063c-4f73-94d8-540a6bd01c38" />
 
-tuimenu is a simple Rust-based program intended for easily opening cli and tui applications from a simple terminal. It allows for simple "aliasing" of commands and quick launching of tui programs from one menu.
+tuimenu is a simple Rust-based program intended for easily opening tui and cli applications from a simple terminal. It allows for simple "aliasing" of commands and quick launching of tui programs from one menu.
 
 ### Installation
 
